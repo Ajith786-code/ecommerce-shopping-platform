@@ -1,5 +1,6 @@
 # Online Shopping Platform — E-Commerce
 
+GitHub Repository:https://github.com/Ajith786-code/ecommerce-shopping-platform
 Free Java Full Stack Internship Task — **JV-EC-001** | Data Alcott Systems
 Student Code: **DAS-JV-001**
 
@@ -45,7 +46,7 @@ See `src/main/resources/data.sql` for sample data. Tables (auto-created by Hiber
 Edit `src/main/resources/application.properties` if your MySQL username/password differ from the defaults:
 ```properties
 spring.datasource.username=root
-spring.datasource.password=ajith
+spring.datasource.password=
 ```
 The database `ecommerce_db` is created automatically on first run (`createDatabaseIfNotExist=true`) — no manual `CREATE DATABASE` step needed.
 
@@ -98,3 +99,13 @@ src/main/resources/
 ## Author
 
 Submitted as part of the Free Java Full Stack Internship Online — Data Alcott Systems.
+## Screenshots
+
+- Home Page
+- Login Page
+- Product Listing
+- Shopping Cart
+- Checkout
+- Admin Dashboard
+
+(Add screenshots after completing the project demonstration.)
