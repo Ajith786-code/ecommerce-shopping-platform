@@ -56,7 +56,7 @@ From the project root:
 ```
 Or import into Spring Tool Suite 4 as an existing Maven project and run `EcommerceApplication.java` as a **Spring Boot App**.
 
-The app starts on **http://localhost:8080**
+The app starts on **http://localhost:8085**
 
 ### 3. Sample login credentials
 | Role  | Email                | Password  |
