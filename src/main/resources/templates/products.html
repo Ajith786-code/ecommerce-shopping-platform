@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: head('Products')}"></head>
+<body>
+<div th:replace="~{fragments/header :: navbar}"></div>
+
+<div class="container my-5">
+    <h2 class="mb-4">All Products</h2>
+
+    <form class="row g-2 mb-4" method="get" th:action="@{/products}">
+        <div class="col-md-6">
+            <input type="text" name="keyword" class="form-control" placeholder="Search products..." th:value="${keyword}">
+        </div>
+        <div class="col-md-4">
+            <select name="categoryId" class="form-select">
+                <option value="">All Categories</option>
+                <option th:each="c : ${categories}" th:value="${c.id}" th:text="${c.name}"
+                        th:selected="${categoryId != null and categoryId == c.id}"></option>
+            </select>
+        </div>
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-primary w-100">Filter</button>
+        </div>
+    </form>
+
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col" th:each="product : ${productPage.content}">
+            <div class="card h-100">
+                <img th:src="${product.imageUrl != null ? product.imageUrl : 'https://via.placeholder.com/300x180?text=Product'}" class="card-img-top" alt="product image">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${product.name}">Product</h5>
+                    <p class="card-text text-muted" th:text="${product.category != null ? product.category.name : ''}"></p>
+                    <p class="card-text fw-bold" th:text="'₹' + ${product.price}">₹0</p>
+                    <a class="btn btn-outline-primary btn-sm" th:href="@{/products/{id}(id=${product.id})}">View Details</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="mt-4" th:if="${productPage.totalPages > 1}">
+        <ul class="pagination">
+            <li class="page-item" th:each="i : ${#numbers.sequence(0, productPage.totalPages - 1)}"
+                th:classappend="${i == productPage.number} ? 'active'">
+                <a class="page-link" th:href="@{/products(page=${i}, keyword=${keyword}, categoryId=${categoryId})}" th:text="${i + 1}"></a>
+            </li>
+        </ul>
+    </nav>
+</div>
+</body>
+</html>
